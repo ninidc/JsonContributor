@@ -1,0 +1,54 @@
+{{>partials/header}}
+
+<div class="page-header">
+	{{#if FIELD.id_field}}
+		<h1>Edition du champ '{{FIELD.name}}'</h1>
+	{{else}}
+		<h1>Nouveau champ</h1>
+	{{/if}}
+</div>
+
+<form action="?" method="POST" role="form">
+
+	<input type="hidden" name="id_project" value="{{PROJECT.id_project}}" />
+	<input type="hidden" name="id_field" value="{{FIELD.id_field}}" />
+	
+	<div class="form-group">
+		<label for="name">Nom</label>
+		<input type="text" name="name" class="form-control" id="name" value="{{FIELD.name}}" placeholder="Entrez le nom">
+	</div>
+
+	<div class="form-group">
+		<label for="type">Type</label>
+		<select name="type" class="form-control">
+		{{#FIELDS_TYPE}}
+			{{#ifCond ../FIELD.id_type == id_type}}
+				<option value="{{id_type}}" selected>{{name}}</option>
+			{{else}}
+				<option value="{{id_type}}">{{name}}</option>
+			{{/ifCond}}
+		{{/FIELDS_TYPE}}
+		</select>
+	</div>
+
+
+	<div class="form-group">
+		<label for="parent">Parent</label>
+		<select name="parent" class="form-control">
+			<option value="0">/</option>
+			{{#FIELDS}}
+				{{#ifCond ../FIELD.parent == id_field}}
+					<option value="{{id_field}}" selected>{{name}}</option>
+				{{else}}
+					<option value="{{id_field}}">{{name}}</option>
+				{{/ifCond}}
+			{{/FIELDS}}
+		</select>
+	</div>
+
+	<input type="submit" value="Enregistrer" class="btn btn-default" />
+
+	<p>{{ERROR}}</p>
+</form>
+
+{{>partials/footer}}

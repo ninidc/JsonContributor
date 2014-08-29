@@ -1,0 +1,30 @@
+{{>partials/header}}
+
+<div class="page-header">
+	<h1>
+		Edition du champ '{{FIELD.name}}' 
+		{{#if TABLE}}
+			<a href="/project/{{PROJECT.id_project}}/data/{{FIELD.id_field}}/add" class="btn btn-default">Ajouter</a>
+		{{/if}}
+	</h1>
+</div>
+
+<form action="?" method="POST" role="form">
+
+	<input type="hidden" name="id_project" value="{{PROJECT.id_project}}" />
+	<input type="hidden" name="id_field" value="{{FIELD.id_field}}" />
+
+	{{#unless TABLE}}
+		<div class="form-group">
+			<label for="value">Valeur</label>
+			<input type="text" name="value" class="form-control" id="value" value="{{FIELD.value}}" placeholder="Entrez la valeur">
+		</div>
+	{{else}}
+		{{{TABLE}}}
+	{{/unless}}
+
+	<p>{{ERROR}}</p>
+
+</form>
+
+{{>partials/footer}}

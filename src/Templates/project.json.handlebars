@@ -1,0 +1,15 @@
+{{>partials/header}}
+
+<div class="page-header">
+  <h1>
+	{{PROJECT.name}} 
+	<a href="/project/{{PROJECT.id_project}}/definition" class="btn btn-default">Définition</a> 
+	<a href="/project/{{PROJECT.id_project}}/data" class="btn btn-default">DATA</a>
+  </h1>
+</div>
+
+<textarea class="form-control" rows="30">
+	{{JSON}}
+</textarea>
+
+{{>partials/footer}}

@@ -1,0 +1,12 @@
+{{>partials/header}}
+
+<div class="page-header">
+  <h1>{{OBJECT.name}}</h1>
+</div>
+
+<h2>Définition</h2>
+{{{FIELDS}}}
+
+<a href="/project/{{PROJECT.id_project}}/definition/object/{{OBJECT.id_object}}/new" class="btn btn-primary">Créer un champ</a>
+
+{{>partials/footer}}

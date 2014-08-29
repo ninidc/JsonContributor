@@ -1,0 +1,16 @@
+{{>partials/header}}
+
+<div class="page-header">
+  <h1>Bienvenue sur JsonContributor</h1>
+</div>
+
+<table>
+{{#PROJECTS}}
+	<tr>
+		<td><a href="/project/{{id_project}}/data">{{name}}</a></td>
+	</tr>
+{{/PROJECTS}}
+
+</table>
+
+{{>partials/footer}}
